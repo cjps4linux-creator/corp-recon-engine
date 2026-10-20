@@ -11,9 +11,8 @@ from typing import Optional, Dict, Any, Tuple
 import pdfplumber
 import pandas as pd
 import re
-import fitz  # PyMuPDF for OCR fallback
+import pypdfium2 as pdfium  # PDFium renderer for the OCR fallback
 import pytesseract
-from PIL import Image
 
 # Configure Tesseract path
 import os
@@ -164,18 +163,24 @@ def _extract_tables_with_ocr(file_path: str) -> Tuple[pd.DataFrame, str]:
     """
     OCR fallback for scanned/image-based PDFs.
     
-    Uses PyMuPDF to render pages as images, then Tesseract to extract text.
+    Uses PDFium (via pypdfium2) to render pages as images, then Tesseract
+    to extract text.
+    
+    pypdfium2 is used rather than PyMuPDF because PyMuPDF is AGPL-3.0, and
+    this project is published under the MIT licence. See ADR-014 in the
+    hermes-os specification repository.
     """
     try:
-        doc = fitz.open(file_path)
+        doc = pdfium.PdfDocument(file_path)
         all_text = ""
         
         for page_num in range(len(doc)):
             page = doc[page_num]
-            # Render page at 300 DPI for good OCR quality
-            mat = fitz.Matrix(2, 2)  # 2x zoom = ~288 DPI
-            pix = page.get_pixmap(matrix=mat)
-            img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)
+            # Render at 2x scale (~144 DPI on A4) for good OCR quality.
+            # The previous PyMuPDF implementation used a 2x matrix, which
+            # produced the same effective resolution.
+            bitmap = page.render(scale=2.0)
+            img = bitmap.to_pil().convert("RGB")
             
             # Run OCR
             page_text = pytesseract.image_to_string(img)

@@ -19,7 +19,7 @@ Upload a **bank statement PDF** and an **invoice PDF**. The engine extracts
 transactions from both, normalises vendor names, matches them with fuzzy
 scoring, and produces a reconciliation report as CSV and a branded PDF.
 
-- **PDF text extraction** — `pdfplumber` / `pypdf`, with `PyMuPDF` and
+- **PDF text extraction** — `pdfplumber` / `pypdf`, with `pypdfium2` and
   `Pillow` fallback for layout-heavy documents
 - **OCR fallback** — `pytesseract` for scanned statements that carry no text layer
 - **Vendor normalisation** — a curated alias table plus typo correction
