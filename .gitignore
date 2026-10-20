@@ -1,0 +1,52 @@
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+credentials.json
+secrets/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.lnk
+.vscode/
+.idea/
+
+# Generated reconciliation output
+recon_data_*.csv
+outputs/
+recon_output/
+
+# Large test fixtures (regenerate with create_all_test_pdfs.py)
+test_data/scanned_bank_real.pdf
+test_data/scanned_bank_test.pdf
+test_data/*.png
+
+# Local launches
+*.log
+
+# --- added for repository publication ---
+recon_report_*.pdf
+# Derived test fixtures (CSV is the source of truth — regenerate with create_all_test_pdfs.py)
+test_data/*.pdf
+stress_test_data/*.pdf
+# Large scanned samples (regenerate locally — too large for the repository)
+
+# Editor/backup leftovers
+*.bak
+*.bak2
+*.orig
