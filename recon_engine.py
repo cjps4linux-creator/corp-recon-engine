@@ -10,15 +10,13 @@ Author: Conrad CJ Wilson
 import re
 import gradio as gr
 import pandas as pd
-import numpy as np
 from rapidfuzz import fuzz, process
 from fpdf import FPDF
 from datetime import datetime
 import os
-import io
-from typing import Optional, Tuple, List, Dict, Any
+from typing import Optional, List, Dict, Any
 
-from pdf_extractor import process_pdf, PDFExtractionError
+from pdf_extractor import process_pdf
 from vendor_normalizer import normalize_description_for_matching, normalize_vendor_name
 from vendor_aliases import get_canonical_name
 
@@ -735,7 +733,7 @@ class ReconciliationPDF(FPDF):
         self.set_font("Helvetica", "", 13)
         self.set_text_color(int(GOLD[1:3], 16), int(GOLD[3:5], 16), int(GOLD[5:7], 16))
         self.set_xy(30, 90)
-        self.cell(150, 8, f"Bank Statement vs. Supplier Invoices", 0, 1, 'C')
+        self.cell(150, 8, "Bank Statement vs. Supplier Invoices", 0, 1, 'C')
         
         # Date
         self.set_font("Helvetica", "", 11)
@@ -1078,7 +1076,6 @@ def create_ui():
                     0, 0, 0, 0
                 )
             
-            status = "⏳ Loading and normalizing files..."
             results = process_reconciliation(bank_file, inv_file, int(thresh), tol / 100)
             
             if results["summary"].get("error"):

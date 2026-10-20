@@ -10,7 +10,7 @@ Maps known vendor name variations to canonical names to handle:
 
 This is a production pattern for handling real-world accounting data messiness.
 """
-from typing import Dict, Set
+from typing import Dict
 import pandas as pd
 
 # Company 1: Nexus Digital

@@ -10,7 +10,6 @@ Uses pdfplumber for table extraction with heuristic detection.
 from typing import Optional, Dict, Any, Tuple
 import pdfplumber
 import pandas as pd
-import io
 import re
 import fitz  # PyMuPDF for OCR fallback
 import pytesseract

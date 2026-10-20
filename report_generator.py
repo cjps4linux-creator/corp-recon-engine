@@ -15,7 +15,7 @@ Multi-layered professional report with:
 
 from fpdf import FPDF
 from datetime import datetime
-from typing import Dict, List, Any
+from typing import Dict, List
 
 # ── Color Palette ──────────────────────────────────
 NAVY = "#1a2332"

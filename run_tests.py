@@ -7,7 +7,6 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from recon_engine import process_reconciliation
-import pandas as pd
 
 TEST_DATA_DIR = os.path.join(os.path.dirname(__file__), "test_data")
 
@@ -71,12 +70,12 @@ def run_test(dataset):
     
     # Show unmatched details
     if results["unmatched_bank"]:
-        print(f"\n⚠️  UNMATCHED BANK ITEMS:")
+        print("\n⚠️  UNMATCHED BANK ITEMS:")
         for u in results["unmatched_bank"]:
             print(f"   - {u['bank_date']} | {u['bank_desc']} | {u['bank_amount']:,.2f} | Reason: {u['reason']}")
     
     if results["unmatched_invoices"]:
-        print(f"\n⚠️  UNMATCHED INVOICES:")
+        print("\n⚠️  UNMATCHED INVOICES:")
         for u in results["unmatched_invoices"]:
             print(f"   - {u['inv_date']} | {u['inv_desc']} | {u['inv_amount']:,.2f}")
     

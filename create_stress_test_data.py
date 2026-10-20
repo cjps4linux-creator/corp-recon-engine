@@ -20,7 +20,6 @@ Generates a single-company test dataset with:
 
 import csv
 import random
-import io
 from datetime import datetime, timedelta
 from pathlib import Path
 from fpdf import FPDF
@@ -95,7 +94,6 @@ def generate_transactions():
     inv_rows = []
     
     running_balance = COMPANY["opening_balance"]
-    tx_date = datetime(2025, 1, 1)
     inv_counter = 1000
     
     # Helper to add a matched pair
@@ -744,13 +742,13 @@ if __name__ == "__main__":
     # Summary
     print(f"\nGenerated {len(bank_rows)} bank transactions")
     print(f"Generated {len(inv_rows)} invoices")
-    print(f"\nCSV files:")
+    print("\nCSV files:")
     print(f"  {bank_csv}")
     print(f"  {inv_csv}")
-    print(f"\nPDF files:")
+    print("\nPDF files:")
     print(f"  {bank_pdf}")
     print(f"  {inv_pdf}")
     print(f"\nOpening balance: ZAR {COMPANY['opening_balance']:,.2f}")
     print(f"Closing balance: ZAR {COMPANY['closing_balance']:,.2f}")
-    print(f"\nExpected match rate: ~75-85%")
-    print(f"  (22 intentional issues across 75 matched pairs)")
+    print("\nExpected match rate: ~75-85%")
+    print("  (22 intentional issues across 75 matched pairs)")
