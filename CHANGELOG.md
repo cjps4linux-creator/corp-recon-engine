@@ -5,6 +5,32 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Security
+
+- **Removed the AGPL-3.0 PyMuPDF dependency.** The OCR fallback path
+  imported PyMuPDF (`fitz`) at module level while this repository was
+  published under the MIT licence. PyMuPDF is AGPL-3.0, so the licence a
+  recipient was given did not match the behaviour of the code they
+  received. The renderer is now `pypdfium2` (BSD-3-Clause OR Apache-2.0),
+  which provides the same page-to-bitmap operation with no external
+  binary dependency. The dependency table re-derived from PyPI metadata
+  now contains no strong-copyleft dependency.
+
+### Added
+
+- **Licence gate.** `tests/test_licence_audit.py` fails the build when a
+  strong-copyleft dependency is declared or imported in this
+  permissively licensed repository, and when a weak-copyleft dependency's
+  licence notice is missing. The gate was mutation-proven: it was
+  observed failing with the original `import fitz` restored and again
+  with `pymupdf` reintroduced into the manifest.
+- **`THIRD_PARTY_NOTICES.md`.** The notice that `fpdf2` (LGPL-3.0-only)
+  requires now travels with the software.
+- **`licence-check` CI job.** The licence gate runs on every push and on
+  every pull request, and is a required status check.
+
 ## [1.0.0] — 2026-10-20
 
 ### Added
