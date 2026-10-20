@@ -8,7 +8,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from recon_engine import process_reconciliation
 
-DEMO_DIR = r"C:\Users\user\Documents\ReconEngine\demo"
+# Override with RECON_DEMO_DIR to point at your demo dataset.
+DEMO_DIR = os.environ.get(
+    "RECON_DEMO_DIR",
+    os.path.join(os.path.expanduser("~"), "Documents", "ReconEngine", "demo"),
+)
 
 datasets = [
     {

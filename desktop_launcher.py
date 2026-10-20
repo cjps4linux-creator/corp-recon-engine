@@ -2,12 +2,14 @@ import sys
 import threading
 import time
 import urllib.request
+from pathlib import Path
+
 import webview
 import uvicorn
 
 # Launch FastAPI backend in a background thread
 def start_backend():
-    sys.path.insert(0, r'C:\Users\user\corp-recon-engine')
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
     from launcher import app
     config = uvicorn.Config(app, host='127.0.0.1', port=8765, log_level='warning')
     server = uvicorn.Server(config)
