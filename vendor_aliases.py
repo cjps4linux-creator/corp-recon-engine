@@ -168,7 +168,7 @@ VERDANT_ALIASES: Dict[str, str] = {
     'wärtsilä': 'wärtsilä',
     'wartsila corporation': 'wärtsilä',
     'wartsila': 'wärtsilä',
-    'tesla energy — solar panels': 'tesla energy',
+    'tesla energy  -  solar panels': 'tesla energy',
     'tesla energy solar panels': 'tesla energy',
     'tesla energy': 'tesla energy',
     'lg energy solution': 'lg energy solutions',

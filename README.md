@@ -19,20 +19,20 @@ Upload a **bank statement PDF** and an **invoice PDF**. The engine extracts
 transactions from both, normalises vendor names, matches them with fuzzy
 scoring, and produces a reconciliation report as CSV and a branded PDF.
 
-- **PDF text extraction** — `pdfplumber` / `pypdf`, with `PyMuPDF` and
+- **PDF text extraction**  -  `pdfplumber` / `pypdf`, with `PyMuPDF` and
   `Pillow` fallback for layout-heavy documents
-- **OCR fallback** — `pytesseract` for scanned statements that carry no text layer
-- **Vendor normalisation** — a curated alias table plus typo correction
-  (`payy` → `pay`, `amercian` → `american`, …)
-- **Fuzzy matching** — `rapidfuzz` scoring with a configurable threshold
-- **Report generation** — `fpdf2` branded PDF with an executive summary,
+- **OCR fallback**  -  `pytesseract` for scanned statements that carry no text layer
+- **Vendor normalisation**  -  a curated alias table plus typo correction
+  (`payy` → `pay`, `american` → `american`, ...)
+- **Fuzzy matching**  -  `rapidfuzz` scoring with a configurable threshold
+- **Report generation**  -  `fpdf2` branded PDF with an executive summary,
   KPI dashboard, evidence table, unmatched items, and action items
-- **Desktop UI** — Gradio, launched from the desktop with one click
+- **Desktop UI**  -  Gradio, launched from the desktop with one click
 
 ## Requirements
 
 - Python 3.11+
-- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract) — only needed for
+- [Tesseract OCR](https://github.com/tesseract-ocr/tesseract)  -  only needed for
   scanned statements without a text layer
 
 ## Install
@@ -72,12 +72,12 @@ python create_all_test_pdfs.py
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE).
+MIT  -  see [LICENSE](LICENSE).
 
 ---
 
 ## Credits
 
-Built by **Conrad CJ Wilson** — [GitHub](https://github.com/cjps4linux-creator) · [LinkedIn](https://linkedin.com/in/conradcjwilson)
+Built by **Conrad CJ Wilson**  -  [GitHub](https://github.com/cjps4linux-creator) · [LinkedIn](https://linkedin.com/in/conradcjwilson)
 
 `conradcjwilson0@gmail.com`

@@ -44,7 +44,7 @@ COMPANY = {
 }
 
 # ──────────────────────────────────────────────────────
-# Vendor master — with canonical + alias names
+# Vendor master  -  with canonical + alias names
 # ──────────────────────────────────────────────────────
 VENDORS = [
     # (canonical, aliases_for_bank, aliases_for_invoice)
@@ -187,97 +187,97 @@ def generate_transactions():
         })
     
     # ══════════════════════════════════════════════════════
-    # MATCHED TRANSACTIONS (50 items — should all match)
+    # MATCHED TRANSACTIONS (50 items  -  should all match)
     # ══════════════════════════════════════════════════════
     
-    # 1. AWS — exact match
+    # 1. AWS  -  exact match
     add_match("Amazon Web Services", 4500.00, datetime(2025, 1, 2))
     
-    # 2. AWS — exact match (duplicate month)
+    # 2. AWS  -  exact match (duplicate month)
     add_match("Amazon Web Services", 4500.00, datetime(2025, 1, 16))
     
-    # 3. Google — exact match
+    # 3. Google  -  exact match
     add_match("Google Workspace", 1200.00, datetime(2025, 1, 4))
     
-    # 4. Microsoft — exact match
+    # 4. Microsoft  -  exact match
     add_match("Microsoft Corporation", 850.50, datetime(2025, 1, 5))
     
-    # 5. Figma — exact match
+    # 5. Figma  -  exact match
     add_match("Figma Inc", 180.00, datetime(2025, 1, 6))
     
-    # 6. Slack — exact match
+    # 6. Slack  -  exact match
     add_match("Slack Technologies", 900.00, datetime(2025, 1, 7))
     
-    # 7. Slack — REFUND (negative bank amount)
+    # 7. Slack  -  REFUND (negative bank amount)
     add_match("Slack Technologies", -900.00, datetime(2025, 1, 8), bank_desc="Slack Technologies Refund", invoice_variant="Slack Technologies", amount_delta=0)
     
-    # 8. GitHub — exact match
+    # 8. GitHub  -  exact match
     add_match("GitHub Inc", 210.00, datetime(2025, 1, 9))
     
-    # 9. GitHub — exact match
+    # 9. GitHub  -  exact match
     add_match("GitHub Inc", 210.00, datetime(2025, 1, 10))
     
-    # 10. Heroku — exact match
+    # 10. Heroku  -  exact match
     add_match("Heroku Inc", 420.00, datetime(2025, 1, 11))
     
-    # 11. Netlify — exact match
+    # 11. Netlify  -  exact match
     add_match("Netlify Inc", 195.00, datetime(2025, 1, 12))
     
-    # 12. Vercel — exact match
+    # 12. Vercel  -  exact match
     add_match("Vercel Inc", 240.00, datetime(2025, 1, 13))
     
-    # 13. Stripe — exact match
+    # 13. Stripe  -  exact match
     add_match("Stripe Inc", 125.50, datetime(2025, 1, 14))
     
-    # 14. PayPal — exact match
+    # 14. PayPal  -  exact match
     add_match("PayPal Payout", 3200.00, datetime(2025, 1, 15))
     
-    # 15. Upwork — exact match
+    # 15. Upwork  -  exact match
     add_match("Upwork Global", 2800.00, datetime(2025, 1, 16))
     
-    # 16. Zoom — exact match
+    # 16. Zoom  -  exact match
     add_match("Zoom Video", 299.00, datetime(2025, 1, 17))
     
-    # 17. Notion — exact match
+    # 17. Notion  -  exact match
     add_match("Notion Labs", 180.00, datetime(2025, 1, 18))
     
-    # 18. Adobe — exact match
+    # 18. Adobe  -  exact match
     add_match("Adobe Inc", 540.00, datetime(2025, 1, 19))
     
-    # 19. Framer — exact match
+    # 19. Framer  -  exact match
     add_match("Framer BV", 165.00, datetime(2025, 1, 20))
     
-    # 20. Webflow — exact match
+    # 20. Webflow  -  exact match
     add_match("Webflow Inc", 348.00, datetime(2025, 1, 21))
     
-    # 21. Namecheap — exact match
+    # 21. Namecheap  -  exact match
     add_match("Namecheap Inc", 95.00, datetime(2025, 1, 22))
     
-    # 22. Cloudflare — exact match
+    # 22. Cloudflare  -  exact match
     add_match("Cloudflare Inc", 240.00, datetime(2025, 1, 23))
     
-    # 23. DigitalOcean — exact match
+    # 23. DigitalOcean  -  exact match
     add_match("DigitalOcean LLC", 720.00, datetime(2025, 1, 24))
     
-    # 24. Mailchimp — exact match
+    # 24. Mailchimp  -  exact match
     add_match("Mailchimp Inc", 1050.00, datetime(2025, 1, 25))
     
-    # 25. Atlas by Stripe — exact match
+    # 25. Atlas by Stripe  -  exact match
     add_match("Atlas by Stripe", 350.00, datetime(2025, 1, 26))
     
     # ══════════════════════════════════════════════════════
-    # ISSUE CASES — intentionally problematic
+    # ISSUE CASES  -  intentionally problematic
     # ══════════════════════════════════════════════════════
     
-    # 26. ROUNDING DIFFERENCE — bank: R1,499.99, invoice: R1,500.00 (1 cent off)
+    # 26. ROUNDING DIFFERENCE  -  bank: R1,499.99, invoice: R1,500.00 (1 cent off)
     add_match("Flysure Insurance", 1500.00, datetime(2025, 1, 3),
               bank_desc="Flysure Travel", amount_delta=-0.01)
     
-    # 27. DATE SHIFT — bank processes T+1
+    # 27. DATE SHIFT  -  bank processes T+1
     add_match("Pick n Pay", 2340.50, datetime(2025, 1, 5),
               date_shift=1, bank_desc="Pick n Pay")
     
-    # 28. DESCRIPTION VARIATION — "Woolworths SA" vs "Woolworths"
+    # 28. DESCRIPTION VARIATION  -  "Woolworths SA" vs "Woolworths"
     add_match("Woolworths SA", 1890.00, datetime(2025, 1, 6),
               bank_desc="Woolworths", inv_desc="Woolworths SA")
     
@@ -297,11 +297,11 @@ def generate_transactions():
     add_match("Telkom SA SOC", 1299.99, datetime(2025, 1, 10),
               date_shift=1, bank_desc="Telkom", inv_desc="Telkom SA SOC")
     
-    # 33. CURRENCY MISMATCH — bank in ZAR, invoice shows USD (should still match amount)
+    # 33. CURRENCY MISMATCH  -  bank in ZAR, invoice shows USD (should still match amount)
     add_match("MultiChoice Group", 1099.00, datetime(2025, 1, 11),
               bank_desc="DStv Premium", inv_desc="MultiChoice Group")
     
-    # 34. PARTIAL PAYMENT — invoice R2,400, bank pays R1,200 (half)
+    # 34. PARTIAL PAYMENT  -  invoice R2,400, bank pays R1,200 (half)
     # This will be a partial match scenario
     canon = "Vodacom SA"
     vendor_data = VENDOR_MAP[canon]
@@ -326,17 +326,17 @@ def generate_transactions():
     })
     inv_counter += 1
     
-    # 35. DUPLICATE BANK ENTRY — same transaction appears twice in bank
+    # 35. DUPLICATE BANK ENTRY  -  same transaction appears twice in bank
     add_match("Discovery Limited", 1850.00, datetime(2025, 1, 13))
     # Duplicate
     add_match("Discovery Limited", 1850.00, datetime(2025, 1, 13),
               bank_desc="Discovery Health", invoice_no="INV-DISC-1001-DUP", status="Paid")
     
-    # 36. REFUND — negative amount
+    # 36. REFUND  -  negative amount
     add_match("Sanlam Insurance", -750.00, datetime(2025, 1, 14),
               bank_desc="Sanlam Refund", inv_desc="Sanlam Insurance", status="Credit Note")
     
-    # 37. SPLIT PAYMENT — one invoice paid in TWO bank installments
+    # 37. SPLIT PAYMENT  -  one invoice paid in TWO bank installments
     canon = "Microsoft Corporation"
     vendor_data = VENDOR_MAP[canon]
     inv_date = datetime(2025, 1, 15)
@@ -372,34 +372,34 @@ def generate_transactions():
     })
     running_balance -= 2600.00
     
-    # 38. TAX DISCREPANCY — invoice shows R1,000 + R150 VAT = R1,150, but bank pays R1,000 (excl. VAT)
+    # 38. TAX DISCREPANCY  -  invoice shows R1,000 + R150 VAT = R1,150, but bank pays R1,000 (excl. VAT)
     add_match("Namecheap Inc", 1000.00, datetime(2025, 1, 16),
               bank_desc="Namecheap Domain", inv_desc="Namecheap Inc")
     # The invoice will show 1,000 + 150 VAT = 1,150 total
-    # Bank pays 1,000 — amount mismatch of R150 (the VAT)
+    # Bank pays 1,000  -  amount mismatch of R150 (the VAT)
     
-    # 39. ROUNDING DIFFERENCE — bank: R3,450.01, invoice: R3,450.00
+    # 39. ROUNDING DIFFERENCE  -  bank: R3,450.01, invoice: R3,450.00
     add_match("Eskom Holdings", 3450.00, datetime(2025, 1, 17),
               bank_desc="Eskom Prepaid", amount_delta=0.01)
     
-    # 40. DESCRIPTION COMPLETELY DIFFERENT — bank uses category, invoice uses vendor
+    # 40. DESCRIPTION COMPLETELY DIFFERENT  -  bank uses category, invoice uses vendor
     add_match("Stripe Inc", 450.00, datetime(2025, 1, 18),
               bank_desc="Payment Processing Fees", inv_desc="Stripe Inc")
     
-    # 41. DATE SHIFT — bank T+2
+    # 41. DATE SHIFT  -  bank T+2
     add_match("Zoom Video", 299.00, datetime(2025, 1, 19),
               date_shift=2, bank_desc="Zoom Meet")
     
-    # 42. AMOUNT MISMATCH — bank pays R500, invoice is R500.00 (should match)
+    # 42. AMOUNT MISMATCH  -  bank pays R500, invoice is R500.00 (should match)
     # INTENTIONAL: make it R501 to create a small mismatch
     add_match("Notion Labs", 500.00, datetime(2025, 1, 20),
               amount_delta=1.00)
     
-    # 43. CURRENCY MISMATCH — bank in ZAR, invoice shows "R" prefix
+    # 43. CURRENCY MISMATCH  -  bank in ZAR, invoice shows "R" prefix
     add_match("Adobe Inc", 540.00, datetime(2025, 1, 21),
               bank_desc="Adobe Creative Cloud", inv_desc="Adobe Inc")
     
-    # 44. DUPLICATE INVOICE — same invoice number, same amount, different date
+    # 44. DUPLICATE INVOICE  -  same invoice number, same amount, different date
     add_match("Framer BV", 165.00, datetime(2025, 1, 22))
     # Duplicate invoice
     canon = "Framer BV"
@@ -414,25 +414,25 @@ def generate_transactions():
         "Status": "Paid",
     })
     
-    # 45. MISSING INVOICE — bank paid but no invoice record
+    # 45. MISSING INVOICE  -  bank paid but no invoice record
     add_unmatched_bank("Office Zone Stationery", 1250.00, datetime(2025, 1, 23))
     
-    # 46. MISSING BANK — invoice exists but not yet paid
+    # 46. MISSING BANK  -  invoice exists but not yet paid
     add_unmatched_invoice("Google Workspace", 1200.00, datetime(2025, 1, 24), status="Pending")
     
-    # 47. TYPO — "Figma" vs "Figmaa"
+    # 47. TYPO  -  "Figma" vs "Figmaa"
     add_match("Figma Inc", 180.00, datetime(2025, 1, 24),
               bank_desc="Figmaa Design Tool", inv_desc="Figma Inc")
     
-    # 48. ROUNDING — R2,340.50 vs R2,340.55
+    # 48. ROUNDING  -  R2,340.50 vs R2,340.55
     add_match("Pick n Pay", 2340.50, datetime(2025, 1, 25),
               amount_delta=0.05)
     
-    # 49. DESCRIPTION — "MS Corp" vs "Microsoft Corporation"
+    # 49. DESCRIPTION  -  "MS Corp" vs "Microsoft Corporation"
     add_match("Microsoft Corporation", 850.50, datetime(2025, 1, 26),
               bank_desc="MS Corp", inv_desc="Microsoft Corporation")
     
-    # 50. AMOUNT MISMATCH — bank R180, invoice R180.00 (should match)
+    # 50. AMOUNT MISMATCH  -  bank R180, invoice R180.00 (should match)
     # INTENTIONAL: make it R179.99
     add_match("Notion Labs", 180.00, datetime(2025, 1, 27),
               amount_delta=-0.01)
@@ -441,7 +441,7 @@ def generate_transactions():
     add_match("Slack Technologies", 900.00, datetime(2025, 1, 28),
               date_shift=3, bank_desc="Slack Inc", inv_desc="Slack Technologies")
     
-    # 52. CURRENCY — bank shows USD amount converted incorrectly
+    # 52. CURRENCY  -  bank shows USD amount converted incorrectly
     add_match("GitHub Inc", 210.00, datetime(2025, 1, 28),
               bank_desc="GitHub Inc (USD)", amount_delta=15.00)  # conversion error
     
@@ -470,29 +470,29 @@ def generate_transactions():
     })
     running_balance -= 200.00
     
-    # 54. DESCRIPTION — "Webflow" vs "Webflow Inc"
+    # 54. DESCRIPTION  -  "Webflow" vs "Webflow Inc"
     add_match("Webflow Inc", 348.00, datetime(2025, 1, 29),
               bank_desc="Webflow", inv_desc="Webflow Inc")
     
-    # 55. ROUNDING — R95.00 vs R94.99
+    # 55. ROUNDING  -  R95.00 vs R94.99
     add_match("Namecheap Inc", 95.00, datetime(2025, 1, 30),
               amount_delta=-0.01)
     
-    # 56. TAX ISSUE — bank pays R1,050 excl. VAT, invoice shows R1,050 + R157.50 = R1,207.50
+    # 56. TAX ISSUE  -  bank pays R1,050 excl. VAT, invoice shows R1,050 + R157.50 = R1,207.50
     add_match("Mailchimp Inc", 1050.00, datetime(2025, 1, 30),
               bank_desc="Mailchimp Premium", inv_desc="Mailchimp Inc")
     
-    # 57. DESCRIPTION — "DigitalOcean LLC" vs "DigitalOcean"
+    # 57. DESCRIPTION  -  "DigitalOcean LLC" vs "DigitalOcean"
     add_match("DigitalOcean LLC", 720.00, datetime(2025, 1, 31),
               bank_desc="DigitalOcean", inv_desc="DigitalOcean LLC")
     
-    # 58. DUPLICATE BANK — same TXN ref
+    # 58. DUPLICATE BANK  -  same TXN ref
     add_match("Heroku Inc", 420.00, datetime(2025, 1, 11))
     # Duplicate
     add_match("Heroku Inc", 420.00, datetime(2025, 1, 11),
               bank_desc="Heroku Cloud", invoice_no="INV-HEROKU-1001-DUP")
     
-    # 59. REFUND — negative amount
+    # 59. REFUND  -  negative amount
     add_match("Stripe Inc", -125.50, datetime(2025, 1, 31),
               bank_desc="Stripe Fee Refund", inv_desc="Stripe Inc", status="Credit Note")
     
@@ -500,11 +500,11 @@ def generate_transactions():
     add_match("Vercel Inc", 240.00, datetime(2025, 1, 13),
               date_shift=2, bank_desc="Vercel Deploy", inv_desc="Vercel Inc")
     
-    # 61. AMOUNT MISMATCH — R 2,800 vs R 2,801 (1 rand off)
+    # 61. AMOUNT MISMATCH  -  R 2,800 vs R 2,801 (1 rand off)
     add_match("Upwork Global", 2800.00, datetime(2025, 1, 16),
               amount_delta=1.00)
     
-    # 62. DESCRIPTION — "PayPal" vs "PayPal Payout"
+    # 62. DESCRIPTION  -  "PayPal" vs "PayPal Payout"
     add_match("PayPal Payout", 3200.00, datetime(2025, 1, 15),
               bank_desc="PayPal", inv_desc="PayPal Payout")
     
@@ -542,29 +542,29 @@ def generate_transactions():
     })
     running_balance -= 95.00
     
-    # 64. ROUNDING — R 3,450.00 vs R 3,449.99
+    # 64. ROUNDING  -  R 3,450.00 vs R 3,449.99
     add_match("Eskom Holdings", 3450.00, datetime(2025, 1, 9),
               amount_delta=-0.01, bank_desc="Eskom Power")
     
-    # 65. DESCRIPTION — "Zoom" vs "Zoom Video"
+    # 65. DESCRIPTION  -  "Zoom" vs "Zoom Video"
     add_match("Zoom Video", 299.00, datetime(2025, 1, 17),
               bank_desc="Zoom", inv_desc="Zoom Video")
     
-    # 66. MISSING BANK — invoice not yet paid
+    # 66. MISSING BANK  -  invoice not yet paid
     add_unmatched_invoice("Flysure Insurance", 1500.00, datetime(2025, 1, 26), status="Pending")
     
-    # 67. MISSING INVOICE — bank charge with no invoice
+    # 67. MISSING INVOICE  -  bank charge with no invoice
     add_unmatched_bank("Bank Service Fee", 350.00, datetime(2025, 1, 31))
     
-    # 68. ROUNDING — R 165.00 vs R 165.01
+    # 68. ROUNDING  -  R 165.00 vs R 165.01
     add_match("Framer BV", 165.00, datetime(2025, 1, 20),
               amount_delta=0.01, bank_desc="Framer Web")
     
-    # 69. DESCRIPTION — "Webflow" vs "Webflow CMS"
+    # 69. DESCRIPTION  -  "Webflow" vs "Webflow CMS"
     add_match("Webflow Inc", 348.00, datetime(2025, 1, 21),
               bank_desc="Webflow Hosting", inv_desc="Webflow CMS")
     
-    # 70. CURRENCY — invoice in USD, bank in ZAR (should still match with tolerance)
+    # 70. CURRENCY  -  invoice in USD, bank in ZAR (should still match with tolerance)
     add_match("Atlas by Stripe", 350.00, datetime(2025, 1, 26),
               bank_desc="Atlas Setup", inv_desc="Atlas by Stripe")
     
@@ -572,19 +572,19 @@ def generate_transactions():
     add_match("Cloudflare Inc", 240.00, datetime(2025, 1, 23),
               date_shift=4, bank_desc="Cloudflare DNS", inv_desc="Cloudflare Inc")
     
-    # 72. TAX — invoice R720 + R108 VAT = R828, bank pays R720
+    # 72. TAX  -  invoice R720 + R108 VAT = R828, bank pays R720
     add_match("DigitalOcean LLC", 720.00, datetime(2025, 1, 24),
               bank_desc="DO Droplet", inv_desc="DigitalOcean LLC")
     
-    # 73. AMOUNT MISMATCH — R 1,050 vs R 1,049.99
+    # 73. AMOUNT MISMATCH  -  R 1,050 vs R 1,049.99
     add_match("Mailchimp Inc", 1050.00, datetime(2025, 1, 25),
               amount_delta=-0.01, bank_desc="Mailchimp Email")
     
-    # 74. DESCRIPTION — "Adobe Creative Cloud" vs "Adobe Inc"
+    # 74. DESCRIPTION  -  "Adobe Creative Cloud" vs "Adobe Inc"
     add_match("Adobe Inc", 540.00, datetime(2025, 1, 19),
               bank_desc="Adobe CC", inv_desc="Adobe Inc")
     
-    # 75. MISSING INVOICE — petty cash expense
+    # 75. MISSING INVOICE  -  petty cash expense
     add_unmatched_bank("Staff Refreshments", 450.00, datetime(2025, 1, 31))
     
     # Sort bank transactions by date
@@ -613,7 +613,7 @@ def write_csv(rows, path, fieldnames):
 
 
 # ──────────────────────────────────────────────────────
-# PDF Generator — realistic bank statement layout
+# PDF Generator  -  realistic bank statement layout
 # ──────────────────────────────────────────────────────
 class BankStatementPDF(FPDF):
     def header(self):
@@ -669,7 +669,7 @@ class BankStatementPDF(FPDF):
 
 
 # ──────────────────────────────────────────────────────
-# PDF Generator — realistic invoice layout
+# PDF Generator  -  realistic invoice layout
 # ──────────────────────────────────────────────────────
 class InvoicePDF(FPDF):
     def header(self):
