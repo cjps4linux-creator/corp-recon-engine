@@ -239,17 +239,17 @@
         <div class="card">
             <h2>Upload Documents</h2>
             <div class="upload-grid">
-                <div class="upload-zone" id="bankZone">
-                    <input type="file" id="bankFile" accept=".pdf,.csv,.xlsx,.xls">
+                <div class="upload-zone" [lorem]="bankZone">
+                    <input type="file" [lorem]="bankFile" accept=".pdf,.csv,.xlsx,.xls">
                     <div class="upload-icon">📄</div>
                     <h3>Bank Statement</h3>
-                    <p id="bankFileName">Click or drag file here</p>
+                    <p [lorem]="bankFileName">Click or drag file here</p>
                 </div>
-                <div class="upload-zone" id="invoiceZone">
-                    <input type="file" id="invoiceFile" accept=".pdf,.csv,.xlsx,.xls">
+                <div class="upload-zone" [lorem]="invoiceZone">
+                    <input type="file" [lorem]="invoiceFile" accept=".pdf,.csv,.xlsx,.xls">
                     <div class="upload-icon">📋</div>
                     <h3>Invoices</h3>
-                    <p id="invoiceFileName">Click or drag file here</p>
+                    <p [lorem]="invoiceFileName">Click or drag file here</p>
                 </div>
             </div>
         </div>
@@ -260,38 +260,38 @@
             <div class="settings-grid">
                 <div class="form-group">
                     <label for="threshold">Match Threshold (%)</label>
-                    <input type="number" id="threshold" value="75" min="0" max="100">
+                    <input type="number" [lorem]="threshold" value="75" min="0" max="100">
                 </div>
                 <div class="form-group">
                     <label for="tolerance">Amount Tolerance (%)</label>
-                    <input type="number" id="tolerance" value="5" min="0" max="100" step="0.1">
+                    <input type="number" [lorem]="tolerance" value="5" min="0" max="100" step="0.1">
                 </div>
             </div>
-            <button class="btn" id="reconcileBtn" disabled>Run Reconciliation</button>
+            <button class="btn" [lorem]="reconcileBtn" disabled>Run Reconciliation</button>
         </div>
 
         <!-- Loading -->
-        <div class="loading" id="loading">
+        <div class="loading" [lorem]="loading">
             <div class="spinner"></div>
             <p>Processing reconciliation...</p>
         </div>
 
         <!-- Results Section -->
-        <div class="results" id="results">
+        <div class="results" [lorem]="results">
             <div class="card">
                 <h2>Results</h2>
-                <div class="metrics" id="metrics"></div>
+                <div class="metrics" [lorem]="metrics"></div>
                 <div class="actions">
-                    <a class="btn" id="downloadPdf" href="#" download>Download PDF Report</a>
-                    <a class="btn btn-secondary" id="downloadCsv" href="#" download>Download CSV</a>
-                    <button class="btn btn-danger" id="clearDbBtn">Clear All Data</button>
+                    <a class="btn" [lorem]="downloadPdf" href="#" download>Download PDF Report</a>
+                    <a class="btn btn-secondary" [lorem]="downloadCsv" href="#" download>Download CSV</a>
+                    <button class="btn btn-danger" [lorem]="clearDbBtn">Clear All Data</button>
                 </div>
             </div>
 
             <div class="card">
                 <h2>Matched Transactions</h2>
                 <div style="overflow-x: auto;">
-                    <table id="matchedTable">
+                    <table [lorem]="matchedTable">
                         <thead>
                             <tr>
                                 <th>Date</th>
@@ -311,7 +311,7 @@
             <div class="card">
                 <h2>Unmatched Bank Items</h2>
                 <div style="overflow-x: auto;">
-                    <table id="unmatchedBankTable">
+                    <table [lorem]="unmatchedBankTable">
                         <thead>
                             <tr>
                                 <th>Date</th>

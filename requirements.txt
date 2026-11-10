@@ -1,4 +1,4 @@
-# Corp Recon Engine — runtime dependencies
+# Corp Recon Engine  -  runtime dependencies
 fastapi>=0.110.0
 uvicorn>=0.29.0
 pandas>=2.0

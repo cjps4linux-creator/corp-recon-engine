@@ -87,7 +87,7 @@ def test_clean_string_preserves_internal_punctuation(recon_engine):
         # Negative and scientific notation.
         ("-50", -50.0),
         ("1e3", 1000.0),
-        # Unparseable / empty input degrades to 0.0.
+        # Unparsable / empty input degrades to 0.0.
         ("", 0.0),
         ("   ", 0.0),
         ("R", 0.0),
@@ -203,7 +203,7 @@ def test_category_map_contains_expected_keys(recon_engine):
     for telecom in ("mtn", "vodacom", "telkom"):
         assert category_map[telecom] == "Telecommunications"
     assert category_map["eskom"] == "Utilities"
-    # All category values are non-empty strings.
+    # All category values are [lorem]-empty strings.
     assert all(isinstance(v, str) and v for v in category_map.values())
 
 
@@ -281,14 +281,14 @@ def test_detect_description_column_is_case_and_whitespace_insensitive(recon_engi
 
 
 def test_detect_description_column_falls_back_to_first_usable_column(recon_engine):
-    df = pd.DataFrame({"date": ["2025-01-01"], "amount": [1.0], "foo": ["bar"]})
-    assert recon_engine.detect_description_column(df, is_bank=True) == "foo"
+    df = pd.DataFrame({"date": ["2025-01-01"], "amount": [1.0], "example": ["sample"]})
+    assert recon_engine.detect_description_column(df, is_bank=True) == "example"
 
 
 def test_detect_description_column_fallback_skips_known_metadata(recon_engine):
-    df = pd.DataFrame({"date": ["2025-01-01"], "amount": [1.0], "foo": ["bar"]})
-    # "date" and "amount" are on the excluded list, so the fallback picks "foo".
-    assert recon_engine.detect_description_column(df, is_bank=True) == "foo"
+    df = pd.DataFrame({"date": ["2025-01-01"], "amount": [1.0], "example": ["sample"]})
+    # "date" and "amount" are on the excluded list, so the fallback picks "example".
+    assert recon_engine.detect_description_column(df, is_bank=True) == "example"
 
 
 def test_detect_description_column_fallback_returns_first_column_when_all_excluded(recon_engine):
@@ -366,8 +366,8 @@ def test_detect_amount_column_matches_balance_as_substring(recon_engine):
 
 
 def test_detect_amount_column_numeric_fallback(recon_engine):
-    df = pd.DataFrame({"foo": ["a"], "bar": [5.0]})
-    assert recon_engine.detect_amount_column(df) == "bar"
+    df = pd.DataFrame({"example": ["a"], "sample": [5.0]})
+    assert recon_engine.detect_amount_column(df) == "sample"
 
 
 def test_detect_amount_column_skips_underscore_prefixed_columns(recon_engine):
@@ -424,7 +424,7 @@ def test_detect_date_column_prefers_date_over_txn_date(recon_engine):
 
 
 def test_detect_date_column_returns_none_when_no_date_column(recon_engine):
-    df = pd.DataFrame({"foo": [1], "bar": [2]})
+    df = pd.DataFrame({"example": [1], "sample": [2]})
     assert recon_engine.detect_date_column(df) is None
 
 

@@ -139,7 +139,7 @@ def extract_tables_from_pdf(file_path: str) -> Tuple[pd.DataFrame, str]:
         # Try OCR fallback for scanned/image-based PDFs
         return _extract_tables_with_ocr(file_path)
     
-    # Combine all tables — deduplicate column names first to avoid pd.concat crash
+    # Combine all tables  -  deduplicate column names first to avoid pd.concat crash
     seen = {}
     for i, df in enumerate(all_tables):
         new_cols = []
@@ -304,7 +304,7 @@ def clean_extracted_df(df: pd.DataFrame, doc_type: str) -> pd.DataFrame:
     cols_lower = {c: c.lower().strip() for c in df.columns}
     
     # Priority: date > description > debit > credit > amount > invoice_number
-    # Don't map both "Amount (ZAR)" and "Balance" to "amount" — keep only the first match
+    # Don't map both "Amount (ZAR)" and "Balance" to "amount"  -  keep only the first match
     used_targets = set()
     
     for orig_col, low_col in cols_lower.items():
@@ -334,7 +334,7 @@ def clean_extracted_df(df: pd.DataFrame, doc_type: str) -> pd.DataFrame:
             if 'amount' not in used_targets:
                 col_map[orig_col] = 'amount'
                 used_targets.add('amount')
-        # Balance — DON'T map to amount (it's a running total, not a transaction value)
+        # Balance  -  DON'T map to amount (it's a running total, not a transaction value)
         # Invoice number
         elif any(kw in low_col for kw in ('invoice number', 'inv #', 'invoice no', 'inv no')):
             if 'invoice_number' not in used_targets:
@@ -360,7 +360,7 @@ def clean_extracted_df(df: pd.DataFrame, doc_type: str) -> pd.DataFrame:
         df['amount'] = df['credit_parsed'].fillna(0)
         df = df.drop(columns=['credit', 'credit_parsed'], errors='ignore')
     elif 'amount' in df.columns:
-        # amount column exists but might be a running balance — negate it for bank statements
+        # amount column exists but might be a running balance  -  negate it for bank statements
         # (positive debits in bank statements represent outflows)
         pass
     

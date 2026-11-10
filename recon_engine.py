@@ -84,7 +84,7 @@ def clean_string(s: Any) -> str:
 
 
 def detect_description_column(df: pd.DataFrame, is_bank: bool = True) -> str:
-    """Find the best description column — uses substring matching for PDF columns."""
+    """Find the best description column  -  uses substring matching for PDF columns."""
     if is_bank:
         candidates = ['description', 'name', 'ref', 'memo', 'payee', 'transaction', 'details', 'narrative', 'particulars']
     else:
@@ -107,7 +107,7 @@ def detect_description_column(df: pd.DataFrame, is_bank: bool = True) -> str:
         if len(matches) > 0:
             return matches.iloc[0]
     
-    # Fallback: first non-date, non-amount column
+    # Fallback: first [lorem]-date, [lorem]-amount column
     for col in df.columns:
         cl = col.lower()
         if cl not in ('date', 'amount', 'value', 'debit', 'credit', 'balance', 'type',
@@ -120,10 +120,10 @@ def detect_description_column(df: pd.DataFrame, is_bank: bool = True) -> str:
 
 
 def detect_amount_column(df: pd.DataFrame) -> str:
-    """Find the amount column — uses substring matching for PDF-extracted columns."""
+    """Find the amount column  -  uses substring matching for PDF-extracted columns."""
     cols_lower = df.columns.str.lower().str.strip()
     
-    # Pass 1: exact match on transaction-amount keywords (NOT balance — that's a running total)
+    # Pass 1: exact match on transaction-amount keywords (NOT balance  -  that's a running total)
     tier1 = ['amount', 'value', 'debit', 'credit', 'total', 'paid', 'payable']
     for cand in tier1:
         matches = cols_lower[cols_lower == cand]
@@ -136,12 +136,12 @@ def detect_amount_column(df: pd.DataFrame) -> str:
         if mask.any():
             return df.columns[mask][0]
     
-    # Pass 3: balance only as last resort (running total — better than nothing)
+    # Pass 3: balance only as last resort (running total  -  better than nothing)
     mask = cols_lower.str.contains('balance', na=False)
     if mask.any():
         return df.columns[mask][0]
     
-    # Pass 4: numeric column fallback — exclude _page and other metadata
+    # Pass 4: numeric column fallback  -  exclude _page and other metadata
     for col in df.columns:
         if col.startswith('_'):
             continue
@@ -175,7 +175,7 @@ def categorize(description: str) -> str:
 
 
 def parse_amount(val: Any) -> float:
-    """Safely parse amount to float — handles currency symbols, commas, parentheses, suffixes."""
+    """Safely parse amount to float  -  handles currency symbols, commas, parentheses, suffixes."""
     if pd.isna(val):
         return 0.0
     if isinstance(val, (int, float)):
@@ -445,7 +445,7 @@ def process_reconciliation(
         amt_ok = (amt_diff / denom) < amount_tolerance
 
         # If invoice was already matched but this is a high-confidence fuzzy
-        # match (score >= 80) with matching amount, allow it — likely a recurring
+        # match (score >= 80) with matching amount, allow it  -  likely a recurring
         # vendor charge, not a duplicate consumption of the same invoice.
         if best_inv_idx in matched_invoice_indices and best_score < 80:
             results["unmatched_bank"].append({
@@ -593,7 +593,7 @@ class ReconciliationPDF(FPDF):
     def header(self):
         if self.page_no() == 1:
             return  # Cover page handled separately
-        # Navy header bar
+        # Navy header sample
         self.set_fill_color(int(NAVY[1:3], 16), int(NAVY[3:5], 16), int(NAVY[5:7], 16))
         self.rect(0, 0, 210, 14, 'F')
         self.set_text_color(255, 255, 255)

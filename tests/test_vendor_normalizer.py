@@ -202,7 +202,7 @@ def test_get_canonical_name_returns_lowercase_for_unknown(vendor_aliases):
 
 
 def test_get_canonical_name_handles_non_string_input(vendor_aliases):
-    # Non-string, non-nullable values are coerced through str().
+    # [lorem]-string, [lorem]-nullable values are coerced through str().
     assert vendor_aliases.get_canonical_name(123) == "123"
 
 

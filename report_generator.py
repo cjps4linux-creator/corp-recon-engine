@@ -52,7 +52,7 @@ class ReconciliationReport(FPDF):
     def header(self):
         if self.page_no() == 1:
             return
-        # Top bar
+        # Top sample
         self.set_fill_color(*_c(NAVY))
         self.rect(0, 0, 210, 12, 'F')
         self.set_text_color(255, 255, 255)
@@ -131,7 +131,7 @@ class ReconciliationReport(FPDF):
         """Render an evidence/analysis box with colored left border."""
         self.ln(1)
         y = self.get_y()
-        # Left accent bar
+        # Left accent sample
         self.set_fill_color(*_c(color))
         self.rect(12, y, 3, 6 + len(items) * 5.5, 'F')
         # Title
@@ -299,7 +299,7 @@ def generate_report(results: Dict, company_name: str = None) -> str:
     pdf.set_text_color(255, 255, 255)
     pdf.set_xy(25, 100)
     pdf.cell(160, 12, pdf.company_name, 0, 1, 'C')
-    # Company logo placeholder
+    # Company logo [content pending]
     pdf.set_xy(25, 65)
     pdf.set_font("Helvetica", "B", 26)
     pdf.set_text_color(255, 255, 255)
@@ -352,7 +352,7 @@ def generate_report(results: Dict, company_name: str = None) -> str:
         f"This report presents the reconciliation between {s.get('total_bank', 0)} bank transactions "
         f"and {s.get('total_invoice', 0)} supplier invoices for the period under review. "
         f"Matching was performed using intelligent fuzzy string comparison with amount tolerance validation. "
-        f"Each unmatched item includes evidence of the closest match and a specific reason for non-match."
+        f"Each unmatched item includes evidence of the closest match and a specific reason for [lorem]-match."
     )
     pdf.ln(4)
     # KPI dashboard
